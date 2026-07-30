@@ -1,0 +1,141 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 Calibri;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww14220\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 URLs:\
+1. {\field{\*\fldinst{HYPERLINK "https://es.wikipedia.org/wiki/SPARQL"}}{\fldrslt https://es.wikipedia.org/wiki/SPARQL}}\
+2. {\field{\*\fldinst{HYPERLINK "http://skos.um.es/TR/rdf-sparql-query/"}}{\fldrslt http://skos.um.es/TR/rdf-sparql-query/}}\
+3. {\field{\*\fldinst{HYPERLINK "http://skos.um.es/TR/rdf-sparql-query/#QueryForms"}}{\fldrslt http://skos.um.es/TR/rdf-sparql-query/#QueryForms}}\
+4. {\field{\*\fldinst{HYPERLINK "http://ai.fon.bg.ac.rs/wp-content/uploads/2016/10/SPARQL-examples-2016-eng.pdf"}}{\fldrslt http://ai.fon.bg.ac.rs/wp-content/uploads/2016/10/SPARQL-examples-2016-eng.pdf}}\
+5. {\field{\*\fldinst{HYPERLINK "https://www.coursera.org/learn/web-semantica/lecture/su2Up/el-concepto-de-grafo-rdf"}}{\fldrslt https://www.coursera.org/learn/web-semantica/lecture/su2Up/el-concepto-de-grafo-rdf}}\
+6. {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Lionel_Messi"}}{\fldrslt https://en.wikipedia.org/wiki/Lionel_Messi}}\
+7. {\field{\*\fldinst{HYPERLINK "http://es.dbpedia.org/page/Lionel_Messi"}}{\fldrslt http://es.dbpedia.org/page/Lionel_Messi}}\
+8. {\field{\*\fldinst{HYPERLINK "http://dbpedia.org/sparql/"}}{\fldrslt http://dbpedia.org/sparql/}}\
+9. {\field{\*\fldinst{HYPERLINK "http://es.dbpedia.org/sparql"}}{\fldrslt http://es.dbpedia.org/sparql}}\
+10. {\field{\*\fldinst{HYPERLINK "http://dbpedia.org/snorql/"}}{\fldrslt http://dbpedia.org/snorql/}}\
+11. {\field{\*\fldinst{HYPERLINK "http://legacy.yasgui.org/"}}{\fldrslt http://legacy.yasgui.org/}}\
+\
+\
+\
+CONSULTAS DBPEDIA:\
+\
+1. 
+\b \'bfCu\'e1l es el lugar de nacimiento de Lionel Messi?
+\b0 \
+\
+PREFIX dbpprop: <http://dbpedia.org/property/>\
+PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>\
+PREFIX dbpedia: <http://dbpedia.org/resource/>\
+\
+SELECT ?lugarNacimiento\
+\
+WHERE\
+\{\
+	dbpedia:Lionel_Messi   dbpprop:birthPlace   ?lugarNacimiento .\
+\
+\}\
+\
+2. 
+\b Deseo consultar una breve descripci\'f3n acerca de Lionel Messi
+\b0 \
+\
+\
+PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>\
+PREFIX dbpedia: <http://dbpedia.org/resource/>\
+\
+SELECT ?resumen\
+\
+WHERE\
+\{\
+	dbpedia:Lionel_Messi   dbpedia-owl:abstract   ?resumen .\
+\
+\}\
+\
+3. 
+\b Uni\'f3n de las respuestas anteriores.
+\b0 \
+\
+PREFIX dbpprop: <http://dbpedia.org/property/>\
+PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>\
+PREFIX dbpedia: <http://dbpedia.org/resource/>\
+\
+SELECT ?lugarNacimiento ?resumen\
+\
+WHERE\
+\{\
+	\{dbpedia:Lionel_Messi   dbpprop:birthPlace   ?lugarNacimiento .\}\
+UNION\
+\
+        \{dbpedia:Lionel_Messi   dbpedia-owl:abstract   ?resumen .\}\
+\
+\}\
+\
+4. 
+\f1\b\fs40 Encontrar los nombres y las fechas de nacimiento de todos los actores nacidos en Londres despu\'e9s del a\'f1o 1930 y que todav\'eda est\'e1n vivos.
+\f0\b0\fs36 \
+\
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+PREFIX dbo: <http://dbpedia.org/ontology/>\
+PREFIX dbr: <http://dbpedia.org/resource/>\
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\
+SELECT DISTINCT ?name ?birth\
+WHERE \{\
+?person dbo:birthPlace dbr:London .\
+?person dbo:occupation dbr:Actor .\
+?person foaf:name ?name .\
+?person dbo:birthDate ?birth\
+FILTER (?birth > "1930-01-01"^^xsd:date) .\
+FILTER NOT EXISTS \{ ?person dbo:deathDate ?death. \}\
+\}\
+\
+5. 
+\b Aplicar consulta CONSTRUCT 
+\b0 \
+\
+PREFIX dbpprop: <http://dbpedia.org/property/>\
+PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>\
+PREFIX dbpedia: <http://dbpedia.org/resource/>\
+\
+CONSTRUCT \{\
+\
+        dbpedia:Lionel_Messi   dbpprop:birthPlace   ?lugarNacimiento .    \
+\
+   \}WHERE\
+\{\
+	dbpedia:Lionel_Messi   dbpprop:birthPlace   ?lugarNacimiento .\
+\
+\}\
+\
+6. 
+\b Segundo ejemplo con CONSTRUCT
+\b0 \
+\
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+PREFIX dbo: <http://dbpedia.org/ontology/>\
+PREFIX dbr: <http://dbpedia.org/resource/>\
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\
+\
+CONSTRUCT \{\
+\
+        ?person dbo:birthPlace dbr:London .\
+        ?person dbo:occupation dbr:Actor .\
+           \
+\
+   \}WHERE\
+\{\
+	?person dbo:birthPlace dbr:London .\
+        ?person dbo:occupation dbr:Actor .\
+        ?person foaf:name ?name .\
+        ?person dbo:birthDate ?birth\
+FILTER (?birth > "1930-01-01"^^xsd:date) .\
+FILTER NOT EXISTS \{ ?person dbo:deathDate ?death. \}\
+\
+\}\
+\
+Url proyecto: {\field{\*\fldinst{HYPERLINK "http://facfiet.unicauca.edu.co/Hiproor/AppWeb/paginas%20de%20contenido/Usuario/Usuario.aspx"}}{\fldrslt http://facfiet.unicauca.edu.co/Hiproor/AppWeb/paginas%20de%20contenido/Usuario/Usuario.aspx}}\
+\
+1. \'bf Cual Actor es responsable de la actividad 10 contactar al doctorando?\
+2. \'bfla actividad 11 enviar la autorizacion de la defensa de tesis y nombramiento del tribunal de evaluacion Que posee?\
+}

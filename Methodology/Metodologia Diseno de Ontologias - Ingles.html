@@ -1,0 +1,819 @@
+<HTML>
+<HEAD>
+  <TITLE>Metodologia Diseno de Ontologias - Ingles.html</TITLE>
+  <meta NAME = "GENERATOR"          CONTENT = "IHMC CmapTools vr. 4.12 ">
+  <meta NAME = "KEYWORDS"           CONTENT = "Mapa Conceptual, cmap, CmapTools, IHMC, Metodologia Diseno de Ontologias - Ingles,  Why is it built? What is its use?,  Ontology Desing Patterns,  W3C Ontology Repositories,  Step 4: Implementation of the Conceptual model,  Task 2: Implementation of the Ontology (RDFS, OWL),  Lista de Atributos de Concepto (slots),  Task 5: Define Axioms formal,  Who are your users?,  pre-modeling,  Protégé,  DublinCore,  Task 1: Formalization Design Conceptual,  Ontology Repository and ONKI Vocabularies,  Range,  versioning,  Wikipedia,  What is the domain will the ontology cover?,  deliveries,  Relationship Attribute List (Binary Constraints),  Reuse of Ontologies">
+  <meta NAME = "DESCRIPTION"        CONTENT = "Este Cmap, tiene información relacionada con: Metodologia Diseno de Ontologias - Ingles, check with SPARQL, Step 4: Implementation of the Conceptual model define Task 2: Implementation of the Ontology (RDFS, OWL), Task 3: Define Properties of the Concepts produces Lista de Atributos de Concepto (slots), Methodology Design of Ontologies define Step 5: Evaluation of the Ontology, Step 5: Evaluation of the Ontology makes versioning, Task 1: Define terms important produces Glossary of terms, Methodology Design of Ontologies define Step 4: Implementation of the Conceptual model, Step 3: Elaboration of the Conceptual model Define Task 1: Define terms important, Step 2: Reuse of Ontologies and Metadata partial Reuse of Terms from other existing sources, Methodology Design of Ontologies define Step 2: Reuse of Ontologies and Metadata, Reuse of Terms from other existing sources sources WordNet, Step 3: Elaboration of the Conceptual model Define Task 2: Define Concepts and Hierarchy, Task 3: Define Properties of the Concepts produces Relationship Attribute List (Binary Constraints), Step 3: Elaboration of the Conceptual model Define Task 3: Define Properties of the Concepts, Task 2: Define Concepts and Hierarchy produces List of Concepts (classes), List of Restrictions Properties (facets) establishes Domain, Methodology Design of Ontologies define Step 1: Determine Requirements, Step 1: Determine Requirements scope What do you ask should i answer?, check with SWRL, Reuse of Ontologies sources W3C Ontology Repositories">
+  <meta NAME = "AUTHOR"             CONTENT = "IHMC CmapTools">
+  <meta HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = UTF-8">
+  <script LANGUAGE="JavaScript1.2">
+  <!--
+    //  PopUp --
+    //  Institute for Human and Machine Cognition, http://www.ihmc.us/
+    //  CmapTools, Version 4.11, http://cmap.ihmc.us/
+    //  Modify by: CmapTools Developers, cmapsupport@ihmc.us
+    //  Date: 12/14/2006
+
+    var IE = 0;
+    var IE4PC = 0;
+    var NS = 0;
+    var GECKO = 0;
+
+    var openpopups = new Array();
+
+    if (document.all) {                 // Internet Explorer Detected
+	   IE = true;	
+    }
+    else if (document.layers) {         // Netscape Navigator Detected
+	   NS = true;	
+    }
+    else if (document.getElementById) { // Netscape 6 Detected
+       GECKO = true;
+    }
+    else {
+	   alert("Unrecognized Browser Detected::\nSorry, your browser is not compatible.");
+    }
+
+    if (IE)
+    {
+	   OS = navigator.platform;
+	   VER = new String(navigator.appVersion);
+	   VER = VER.substr (0, VER.indexOf(" "));
+	   if ((VER < 4.8) && (OS == "Win32")) 
+	   {
+	       IE4PC = 1;
+	   }
+    }
+
+    function handleResize() {
+	    location.reload();
+	    return false;
+    }
+
+
+    if ((NS) && (navigator.platform == "MacPPC")) {
+	   window.captureEvents (Event.RESIZE);
+	   window.onresize = handleResize;
+    }
+
+    function openResource(event, resourcePath, resourceName, resourceType)
+    {
+	   var newwindow;
+
+       // Resource MIMETypes are enumerated as follows: 
+       // cMap     = Undefined
+       // Image    = 0
+       // Video    = 1
+       // Text     = 2
+       // Audio    = 3
+
+       popDown();
+
+	   switch (resourceType) 
+	   {
+	    case 0:     //Image
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<center><img src=\"';
+                    text += resourcePath;
+                    text +='\"> </center>';
+             break;
+		
+	    case 1:  text   // Video
+		     newwindow = window.open (resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+                     var text ='<embed src=\"';
+                     text += resourcePath;
+                     text +='\" autostart=true> </embed> ';
+             break;
+
+	    case 2:      // Text or Unknown 
+		     newwindow = window.open(resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+              break;
+
+	    case 3:       // Audio
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<embed src=\"';
+                    text += resourcePath;
+                    text +='\" autoplay=true> </embed> ';
+             break;
+
+	    case 4:
+                    newwindow = window.open(resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+	     break;
+	    }
+        return;
+    }
+
+
+
+    function popUpEvt(event, popupName)
+    {
+	popDown();
+
+	if (GECKO)
+	{
+	    document.getElementById(popupName).style.left = event.layerX;
+	    document.getElementById(popupName).style.top = event.layerY;
+	    document.getElementById(popupName).style.background = "#B3B3B3";
+	    document.getElementById(popupName).style.visibility = "visible";
+	    openpopups.push(popupName);
+	}
+	else if (NS) 
+	{
+	    document.layers[popupName].moveTo (event.pageX, event.pageY);
+	    document.layers[popupName].bgColor = "#B3B3B3";
+	    document.layers[popupName].visibility = "show";
+	    openpopups.push(popupName);
+	}
+	else // if (IE)
+	{
+	    window.event.cancelBubble = true;
+	    if (!IE4PC) {
+		document.all[popupName].style.backgroundColor = "#B3B3B3";
+	    }	
+	    document.all[popupName].style.left = window.event.clientX + document.body.scrollLeft;
+	    document.all[popupName].style.top = window.event.clientY + document.body.scrollTop;
+	    document.all[popupName].style.visibility = "visible";
+	    openpopups[openpopups.length] = popupName;
+	}
+	return false;
+    }
+
+    function popDown()
+    {
+	var popupname;
+	
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+		document.getElementById(popupname).style.visibility = "hidden";
+	    }
+	    else if (NS) {
+		document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+		document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+	return;
+    }
+
+    function popDownNoGecko() 
+    {
+	var popupname;
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+           //  document.getElementById(popupname).style.visibility = "hidden"; 
+	        return;   // erased for test purposes
+	    }  
+	    else if (NS) {
+	        document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+	        document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+        return;
+    }
+  //-->
+  </script>
+</HEAD>
+<BODY bgcolor="#FFFFFF" leftmargin="0" topmargin="0">
+<noscript>
+  <table width=90% cellpadding=10>
+    <tr>
+      <td bgcolor=ff4447>
+        <font color=000000 size=+1 face="helvetica">
+        <h1>WARNING:</h1>
+        <b>JavaScript is turned OFF.  None of the links on this concept map will <br>
+           work until it is reactivated.
+          <p>
+            <a href="http://cmap.ihmc.us/docs/EnablingJavaScript.html">
+                            If you need help turning JavaScript On, click here.
+            </a>
+          </p>
+        </b>
+      </td>
+    </tr>
+  </table>
+Este Cmap, tiene información relacionada con: Metodologia Diseno de Ontologias - Ingles, check with SPARQL, Step 4: Implementation of the Conceptual model define Task 2: Implementation of the Ontology (RDFS, OWL), Task 3: Define Properties of the Concepts produces Lista de Atributos de Concepto (slots), Methodology Design of Ontologies define Step 5: Evaluation of the Ontology, Step 5: Evaluation of the Ontology makes versioning, Task 1: Define terms important produces Glossary of terms, Methodology Design of Ontologies define Step 4: Implementation of the Conceptual model, Step 3: Elaboration of the Conceptual model Define Task 1: Define terms important, Step 2: Reuse of Ontologies and Metadata partial Reuse of Terms from other existing sources, Methodology Design of Ontologies define Step 2: Reuse of Ontologies and Metadata, Reuse of Terms from other existing sources sources WordNet, Step 3: Elaboration of the Conceptual model Define Task 2: Define Concepts and Hierarchy, Task 3: Define Properties of the Concepts produces Relationship Attribute List (Binary Constraints), Step 3: Elaboration of the Conceptual model Define Task 3: Define Properties of the Concepts, Task 2: Define Concepts and Hierarchy produces List of Concepts (classes), List of Restrictions Properties (facets) establishes Domain, Methodology Design of Ontologies define Step 1: Determine Requirements, Step 1: Determine Requirements scope What do you ask should i answer?, check with SWRL, Reuse of Ontologies sources W3C Ontology Repositories
+
+</noscript>
+
+<map name="Metodologia Diseno de Ontologias - Ingles.html">
+  <area shape="rect"
+        href="1YPNJP1CJI14V58DCI3XBItextIhtml"
+        onClick="popUpEvt(event,'1YPNJP1CJI14V58DCI3XBItextIhtml'); return false;"
+        coords="1261,669,1279,687">
+  <area shape="rect"
+        href="1P4NQYHLJI16KW3CJI1H1ItextIhtml"
+        onClick="popUpEvt(event,'1P4NQYHLJI16KW3CJI1H1ItextIhtml'); return false;"
+        coords="1223,579,1241,597">
+  <area shape="rect"
+        href="1P4PFCPHSI29PG3CQI3LTItextIhtml"
+        onClick="popUpEvt(event,'1P4PFCPHSI29PG3CQI3LTItextIhtml'); return false;"
+        coords="177,705,195,723">
+  <area shape="rect"
+        href="1P4PHF83WI100JD3QI5G7ItextIhtml"
+        onClick="popUpEvt(event,'1P4PHF83WI100JD3QI5G7ItextIhtml'); return false;"
+        coords="51,301,69,319">
+  <area shape="rect"
+        href="1P4NS117JI14YXLGJI1VCItextIhtml"
+        onClick="popUpEvt(event,'1P4NS117JI14YXLGJI1VCItextIhtml'); return false;"
+        coords="1211,757,1229,775">
+  <area shape="rect"
+        href="1YPNH8ZNNIGGWRCHI300ItextIhtml"
+        onClick="popUpEvt(event,'1YPNH8ZNNIGGWRCHI300ItextIhtml'); return false;"
+        coords="1280,367,1298,385">
+  <area shape="rect"
+        href="1P4NSBK33I1TXXM41I27QItextIhtml"
+        onClick="popUpEvt(event,'1P4NSBK33I1TXXM41I27QItextIhtml'); return false;"
+        coords="1119,769,1137,787">
+  <area shape="rect"
+        href="1P4PFG3ZNI1CB5L43I3NGItextIhtml"
+        onClick="popUpEvt(event,'1P4PFG3ZNI1CB5L43I3NGItextIhtml'); return false;"
+        coords="367,708,385,726">
+  <area shape="rect"
+        href="1P4NPVTSHI14Y86CILCItextIx-url"
+        onClick="popUpEvt(event,'1P4NPVTSHI14Y86CILCItextIx-url'); return false;"
+        coords="558,279,576,297">
+  <area shape="rect"
+        href="1P4NPVTSHI14Y86CILCItextIhtml"
+        onClick="popUpEvt(event,'1P4NPVTSHI14Y86CILCItextIhtml'); return false;"
+        coords="541,279,559,297">
+  <area shape="rect"
+        href="1P4PF7LHHI1FJFF4JI3G2ItextIhtml"
+        onClick="popUpEvt(event,'1P4PF7LHHI1FJFF4JI3G2ItextIhtml'); return false;"
+        coords="142,559,160,577">
+  <area shape="rect"
+        href="1P4NT266MI1ZS8WSSI2TVItextIhtml"
+        onClick="popUpEvt(event,'1P4NT266MI1ZS8WSSI2TVItextIhtml'); return false;"
+        coords="127,438,145,456">
+  <area shape="rect"
+        href="1P4NQ12WCI7SDRJFIM9ItextIhtml"
+        onClick="popUpEvt(event,'1P4NQ12WCI7SDRJFIM9ItextIhtml'); return false;"
+        coords="814,196,832,214">
+  <area shape="rect"
+        href="1P4PHDPKMI15B1KSXI5FNItextIhtml"
+        onClick="popUpEvt(event,'1P4PHDPKMI15B1KSXI5FNItextIhtml'); return false;"
+        coords="53,247,71,265">
+  <area shape="rect"
+        href="1P4NQY25RIXW496PI1G8ItextIhtml"
+        onClick="popUpEvt(event,'1P4NQY25RIXW496PI1G8ItextIhtml'); return false;"
+        coords="1240,521,1258,539">
+  <area shape="rect"
+        href="1P4PF63P7I29WY9CCI3CXItextIhtml"
+        onClick="popUpEvt(event,'1P4PF63P7I29WY9CCI3CXItextIhtml'); return false;"
+        coords="143,498,161,516">
+  <area shape="rect"
+        href="1P4NQ278FI3T0XPXINPItextIhtml"
+        onClick="popUpEvt(event,'1P4NQ278FI3T0XPXINPItextIhtml'); return false;"
+        coords="763,301,781,319">
+  <area shape="rect"
+        href="1XXY4RK9TI8CTZYBI3NBItextIhtml"
+        onClick="popUpEvt(event,'1XXY4RK9TI8CTZYBI3NBItextIhtml'); return false;"
+        coords="159,24,177,42">
+  <area shape="rect"
+        href="1XXY4RK9TI8CTZYBI3NBItextIplain"
+        onClick="popUpEvt(event,'1XXY4RK9TI8CTZYBI3NBItextIplain'); return false;"
+        coords="176,24,194,42">
+  <area shape="rect"
+        href="1WBCJPNWCIXZMFYNI1YPItextIhtml"
+        onClick="popUpEvt(event,'1WBCJPNWCIXZMFYNI1YPItextIhtml'); return false;"
+        coords="1132,600,1150,618">
+  <area shape="rect"
+        href="1P4NRTMV1I1MPYK25I1T6ItextIhtml"
+        onClick="popUpEvt(event,'1P4NRTMV1I1MPYK25I1T6ItextIhtml'); return false;"
+        coords="1211,711,1229,729">
+  <area shape="rect"
+        href="1YPNH9NJJI9RBLHYI31NItextIhtml"
+        onClick="popUpEvt(event,'1YPNH9NJJI9RBLHYI31NItextIhtml'); return false;"
+        coords="1284,411,1302,429">
+  <area shape="rect"
+        href="1YPNJFJN8ISM6V84I3LHItextIhtml"
+        onClick="popUpEvt(event,'1YPNJFJN8ISM6V84I3LHItextIhtml'); return false;"
+        coords="1285,306,1303,324">
+  <area shape="rect"
+        href="1P4PH2GNCI8PT38ZI4YMItextIhtml"
+        onClick="popUpEvt(event,'1P4PH2GNCI8PT38ZI4YMItextIhtml'); return false;"
+        coords="978,714,996,732">
+  <area shape="rect"
+        href="1XXY4ZC16I26ZM4ZQI3ZZIimage"
+        onClick="popUpEvt(event,'1XXY4ZC16I26ZM4ZQI3ZZIimage'); return false;"
+        coords="152,69,170,87">
+  <area shape="rect"
+        href="1XXY4ZC16I26ZM4ZQI3ZZIvideo"
+        onClick="popUpEvt(event,'1XXY4ZC16I26ZM4ZQI3ZZIvideo'); return false;"
+        coords="169,69,187,87">
+  <area shape="rect"
+        href="1XXY4ZC16I26ZM4ZQI3ZZIx-unknownIx-unknown"
+        onClick="popUpEvt(event,'1XXY4ZC16I26ZM4ZQI3ZZIx-unknownIx-unknown'); return false;"
+        coords="186,69,204,87">
+  <area shape="rect"
+        href="1YPNGL58CI1LZFGXWI29WItextIhtml"
+        onClick="popUpEvt(event,'1YPNGL58CI1LZFGXWI29WItextIhtml'); return false;"
+        coords="1270,476,1288,494">
+  <area shape="rect"
+        href="1P4PGCQR5I4MQQXNI449ItextIhtml"
+        onClick="popUpEvt(event,'1P4PGCQR5I4MQQXNI449ItextIhtml'); return false;"
+        coords="602,705,620,723">
+  <area shape="rect"
+        href="1P4NQ4RGRI12GN2D9IV2ItextIhtml"
+        onClick="popUpEvt(event,'1P4NQ4RGRI12GN2D9IV2ItextIhtml'); return false;"
+        coords="658,63,676,81">
+</map>
+
+<center>
+  <table width=* height=* cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td valign=center align=center>
+        <img USEMAP="#Metodologia Diseno de Ontologias - Ingles.html"
+             SRC="Metodologia Diseno de Ontologias - Ingles.jpg"
+             ALIGN=middle
+             BORDER=0
+             onClick=popDown();>
+      </td>
+    </tr>
+    <tr>
+      <td VALIGN=top ALIGN=right>
+        <table>
+          <tr>
+            <td ALIGN=right VALIGN=middle>
+              <map NAME="CmapToolsTrademark">
+                <area SHAPE="rect"
+                      href="http://cmap.ihmc.us/"
+                      onClick="openResource(event,'http://cmap.ihmc.us/', 0, 2); return false;"
+                      coords="1,1,210,50">
+              </map>
+            </td>
+          </tr>
+          <tr>
+            <td  ALIGN=right VALIGN=middle>
+              <img USEMAP="#CmapToolsTrademark"
+                   SRC="CmapToolsTrademark.gif" 
+                   ALT="IHMC Cmap Tools Trademark" width="210" height="50"
+                   ALIGN=middle
+                   BORDER=0>
+            </td>
+            <td VALIGN=middle>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</center>
+</BODY>
+</HTML>
+<div id="1YPNJP1CJI14V58DCI3XBItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://ontologydesignpatterns.org/wiki/Main_Page "TITLE="">
+      Ontology Desing Patterns
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NQYHLJI16KW3CJI1H1ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://www.w3.org/wiki/Ontology_repositories "TITLE="Es un listado de repositorios de ontologías porpuesto por la W3C">
+      Repositorio de Ontologías W3C
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4PFCPHSI29PG3CQI3LTItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="04 - Plantilla de Propiedades - Atributos de Clase.dotx "TITLE="Plantilla que describe las propiedades de los atributos de clase de los conceptos de la ontología">
+      04 - Plantilla de Propiedades - Atributos de Clase
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4PHF83WI100JD3QI5G7ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="presentacionprotege.pdf "TITLE="">
+      presentacionprotege
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="ProtegeOWLTutorialP4_v1_3.pdf "TITLE="">
+      ProtegeOWLTutorialP4_v1_3
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NS117JI14YXLGJI1VCItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://dublincore.org/ "TITLE="La Iniciativa de Metadatos Dublin Core, o "DCMI", es una organización abierta para el apoyo a la innovación en el diseño de los metadatos y las mejores prácticas a través de la ecología de metadatos. Las actividades de DCMI incluyen el trabajo sobre la arquitectura y el modelado, las discusiones y el trabajo colaborativo en comunidades DCMI y DCMI Grupos de Tareas, conferencias mundiales, reuniones y talleres, y los esfuerzos educativos para promover la aceptación generalizada de los estándares de metadatos y las mejores prácticas.">
+      DublinCore
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1YPNH8ZNNIGGWRCHI300ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://onki.fi/en/browser/ "TITLE="Repositorio abierto de consulta de ontologías y vocabularios controlados">
+      Repositorio de Ontologías y Vocabularios ONKI
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NSBK33I1TXXM41I27QItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://www.wikipedia.org/ "TITLE="Enciclopedia libre de conceptos creada por los usuarios de la Web que aportan con artículo los cuales son revisados y aprobados por los mismos usuarios">
+      Wikipedia
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4PFG3ZNI1CB5L43I3NGItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="05 - Plantilla de Propiedades Restricciones Binarias.dotx "TITLE="Plantilla que describe las restricciones binarias o relaciones entre clases.">
+      05 - Plantilla de Propiedades Restricciones Binarias
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NPVTSHI14Y86CILCItextIx-url" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://www.hipertexto.info/documentos/ontologias.htm "TITLE="Sitio web eb el cual se abordan los principales conceptos de ontologías y un listado completo de los principales recursos existentes.">
+      Conceptos de Ontologías
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NPVTSHI14Y86CILCItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="01 - construccion ontologias jesus contreras.pdf "TITLE="Tutorial que resume la construcción de ontologías">
+      01 - construcción ontologias jesus contreras
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="02 - Methontology.pdf "TITLE="">
+      02 - Methontology
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="03 - ontology101.pdf "TITLE="">
+      03 - ontology101
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="04 - Buenas practicas desarrollo ontologias.pdf "TITLE="">
+      04 - Buenas prácticas desarrollo ontologias
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="05 - Metodologia RefSeno Ontologias Ingenieria.pdf "TITLE="">
+      05 - Metodologia RefSeno Ontologias Ingeniería
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="06 - NeOn Methodology for Building Ontology Networks.pdf "TITLE="">
+      06 - NeOn Methodology for Building Ontology Networks
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="07 - Resumen metodologias diseno de ontologias.pdf "TITLE="">
+      07 - Resumen metodologías diseño de ontologias
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="08 - Creacion de Ontologias IoT.pdf "TITLE="">
+      08 - Creación de Ontologías IoT
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="09 - Metodologia Agil SWOs-Evaluacion.pdf "TITLE="">
+      09 - Metodologia Agil SWOs-Evaluacion
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="10 - Inenigeria Ontologica  - A Reality check.pdf "TITLE="">
+      10 - Inenigería Ontologica  - A Reality check
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4PF7LHHI1FJFF4JI3G2ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="03 - Plantilla de Jerarquia de Clases.dotx "TITLE="Plantilla que presneta la jerarquia de clases o conceptos construida.">
+      03 - Plantilla de Jerarquía de Clases
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NT266MI1ZS8WSSI2TVItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="01 - Plantilla de Glosario de Terminos.dotx "TITLE="Plantilla que permite colocar la lista de términos identidicados en el marco de referencia del dominio.">
+      01 - Plantilla de Glosario de Términos
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NQ12WCI7SDRJFIM9ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="00 - Plantilla de Formalizacion de la Ontologia.docx "TITLE="">
+      00 - Plantilla de Formalizacion de la Ontologia
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4PHDPKMI15B1KSXI5FNItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="COE_Tools_for_Collaborative_Ontology_Development_a.pdf "TITLE="">
+      COE_Tools_for_Collaborative_Ontology_Development_a
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="COEmanual06.pdf "TITLE="">
+      COEmanual06
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="Overview.pdf "TITLE="">
+      Overview
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="Tabla de Equivalencias de Modelos.pdf "TITLE="">
+      Tabla de Equivalencias de Modelos
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NQY25RIXW496PI1G8ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://www.ksl.stanford.edu/software/ontolingua/ "TITLE="Ontolingua proporciona un entorno colaborativo distribuido para buscar, crear, editar, modificar y utilizar ontologías">
+      Ontolingua
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4PF63P7I29WY9CCI3CXItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="02 - Plantilla de Lista de clases.dotx "TITLE="Plantilla que permite definir las clases o conceptos identificados">
+      02 - Plantilla de Lista de clases
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NQ278FI3T0XPXINPItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="00 - Plantilla de Reutilizacion de la Ontologia.docx "TITLE="">
+      00 - Plantilla de Reutilizacion de la Ontología
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XXY4RK9TI8CTZYBI3NBItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="Sparql V2.pptx "TITLE="">
+      Sparql V2
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="Ontologias-WS-19-11-20.pptx "TITLE="">
+      Ontologias-WS-19-11-20
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="learning-sparql-2nd-edition.pdf "TITLE="">
+      learning-sparql-2nd-edition
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XXY4RK9TI8CTZYBI3NBItextIplain" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="Consultas SPARQL.rtf "TITLE="">
+      Consultas SPARQL
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1WBCJPNWCIXZMFYNI1YPItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://www.ontobee.org "TITLE="Ontobee: A linked data server designed for ontologies. Ontobee is aimed to facilitate ontology data sharing, visualization, query, integration, and analysis">
+      OntoBee
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NRTMV1I1MPYK25I1T6ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://wordnet.princeton.edu/ "TITLE="WordNet® es una gran base de datos léxica de Inglés. Sustantivos, verbos, adjetivos y adverbios se agrupan en conjuntos de sinónimos cognitivos (synsets), cada uno expresando un concepto distinto. Synsets están vinculados entre sí por medio de las relaciones conceptuales semánticas y léxicas. La red resultante de palabras y conceptos semanticamente se puede navegar con el navegador. WordNet es también libre y públicamente disponible para su descarga. Estructura de WordNet hace que sea una herramienta útil para la lingüística computacional y procesamiento del lenguaje natural.">
+      WordNet
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1YPNH9NJJI9RBLHYI31NItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://lov.linkeddata.es/dataset/lov "TITLE="Repositorio de vocabularios de Linked Data">
+      Linked Open Vocabularies
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1YPNJFJN8ISM6V84I3LHItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="http://owl.cs.manchester.ac.uk/tools/repositories/ "TITLE="">
+      Manchester University List of Ontology Repositories
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4PH2GNCI8PT38ZI4YMItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="07 - Plantilla de Definicion de Axiomas Formales.dotx "TITLE="Plantilla que recoge la información de los axionas identificados en la ontología">
+      07 - Plantilla de Definición de Axiomas Formales
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XXY4ZC16I26ZM4ZQI3ZZIimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="arbol.png "TITLE="">
+      arbol
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XXY4ZC16I26ZM4ZQI3ZZIvideo" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="SWRL_Protege_5_2.mp4 "TITLE="">
+      SWRL_Protege_5_2
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1XXY4ZC16I26ZM4ZQI3ZZIx-unknownIx-unknown" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="Ejemplo.owl "TITLE="">
+      Ejemplo.owl
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1YPNGL58CI1LZFGXWI29WItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://oeg.fi.upm.es/index.php/es/ontologies/index.html "TITLE="Pagina con enlaces a repositorios de ontologías">
+      Ontology Ingeeniering Group
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4PGCQR5I4MQQXNI449ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="06 - Plantilla de Restricciones de Propiedades.dotx "TITLE="Plantilla que describe las restricciones de las propiedades de clase identificadas">
+      06 - Plantilla de Restricciones de Propiedades
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1P4NQ4RGRI12GN2D9IV2ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="EsquemaEvaluacionOntologiaDominio.pdf "TITLE="">
+      EsquemaEvaluacionOntologiaDominio
+      </a>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="paper7-evaluacion de ontologias.pdf "TITLE="">
+      paper7-evaluacion de ontologias
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
